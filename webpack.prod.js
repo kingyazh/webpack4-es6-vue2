@@ -3,6 +3,7 @@ const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common.js');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports = Merge(CommonConfig, {
     mode:'production',
     devtool: 'source-map',
@@ -79,12 +80,16 @@ module.exports = Merge(CommonConfig, {
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
-        }),
-        new UglifyJSPlugin({
-            sourceMap: true
         })
     ],
     optimization: {
-        minimize: true
+        minimizer: [
+            new UglifyJSPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true
+            }),
+            new OptimizeCSSAssetsPlugin({})  // use OptimizeCSSAssetsPlugin
+        ]
     }
 })
