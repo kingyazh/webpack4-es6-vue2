@@ -107,7 +107,10 @@ const config = {
         // 每次打包清空目录
         new CleanWebpackPlugin(['./dist']),
         // 引入全局vue
-        new webpack.ProvidePlugin({ Vue: 'vue', $V: 'vue' }),
+        new webpack.ProvidePlugin({
+            Vue: 'vue',
+            $V: 'vue'
+        }),
         // 合并公共资源
         // CommonsChunkPlugin 被删除，用 SplitChunksPlugin 替换
         // new webpack.optimize.CommonsChunkPlugin({
