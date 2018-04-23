@@ -4,6 +4,7 @@
             "env",
             {
                 "targets": {
+                    "node": "current",
                     "browsers": [
                         "> 1%",
                         "last 2 versions",
@@ -16,6 +17,7 @@
     ],
     "plugins": [
         [
+            "transform-vue-jsx",
             "transform-runtime",
             {
                 "helpers": false,
@@ -32,7 +34,10 @@
                 "stage-0"
             ],
             "plugins": [
-                "istanbul"
+                "istanbul",
+                "transform-vue-jsx",
+                "transform-es2015-modules-commonjs",
+                "dynamic-import-node"
             ]
         }
     }
