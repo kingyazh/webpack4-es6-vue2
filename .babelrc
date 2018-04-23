@@ -1,0 +1,39 @@
+{
+    "presets": [
+        [
+            "env",
+            {
+                "targets": {
+                    "browsers": [
+                        "> 1%",
+                        "last 2 versions",
+                        "not ie <= 8"
+                    ]
+                }
+            }
+        ],
+        "stage-0"
+    ],
+    "plugins": [
+        [
+            "transform-runtime",
+            {
+                "helpers": false,
+                "polyfill": false,
+                "regenerator": true,
+                "moduleName": "babel-runtime"
+            }
+        ]
+    ],
+    "env": {
+        "test": {
+            "presets": [
+                "env",
+                "stage-0"
+            ],
+            "plugins": [
+                "istanbul"
+            ]
+        }
+    }
+}

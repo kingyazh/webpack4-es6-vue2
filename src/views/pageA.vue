@@ -1,0 +1,6 @@
+<template>
+<div id="page-a">
+    <h1>this is pageA</h1>
+    <img src="../images/pageA.jpg" alt="">
+</div>
+</template>
