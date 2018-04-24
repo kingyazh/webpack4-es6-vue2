@@ -16,7 +16,10 @@ const appPath = path.join(__dirname, 'src');
 const outputPath = path.join(__dirname, 'dist');
 const config = {
     // 入口文件
-    entry: './src/index.js',
+    entry: {
+        main: './src/index.js',
+        vendors: ['vue', 'vue-router']
+    },
 
     // 输出
     output: {
@@ -60,6 +63,7 @@ const config = {
                 exclude: /(node_modules)/,
                 use: {
                     loader: 'babel-loader',
+                    // exclude: /node_modules/
                 },
             },
             {
@@ -80,6 +84,7 @@ const config = {
                     {
                         loader: 'file-loader',
                         options: {
+                            limit: 10000,
                             name: '[name].[hash:7].[ext]',
                             outputPath: 'images/',
                         },
@@ -88,14 +93,15 @@ const config = {
             },
             // font chunk
             {
-                test: /\.(woff|woff2|eot|ttf|svg)$/,
+                test: /\.(woff|woff2?|eot|ttf|otf|svg)$/,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
+                            limit: 10000,
                             name: '[name].[ext]?[hash:7]',
                             outputPath: 'fonts/', // where the fonts will go
-                            publicPath: './', // override the default path
+                            publicPath: './fonts/', // override the default path
                         },
                     },
                 ],

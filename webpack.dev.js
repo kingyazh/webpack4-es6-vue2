@@ -20,6 +20,14 @@ module.exports = Merge(CommonConfig, {
                             sourceMap: true
                         }
                     },
+                    // 'css-loader?importLoaders=1', //对于css中@import进来的css同样做前缀处理
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders:1,
+                            sourceMap: true
+                        }
+                    },
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -31,7 +39,7 @@ module.exports = Merge(CommonConfig, {
                         options: {
                             sourceMap: true
                         }
-                    },
+                    }
                 ],
             },
             // scss to css
@@ -47,6 +55,7 @@ module.exports = Merge(CommonConfig, {
                     {
                         loader: "css-loader",
                         options: {
+                            importLoaders:1,
                             sourceMap: true
                         }
                     },

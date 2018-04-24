@@ -3,6 +3,7 @@
         [
             "env",
             {
+                "modules": false,
                 "targets": {
                     "node": "current",
                     "browsers": [
@@ -24,6 +25,11 @@
                 "polyfill": false,
                 "regenerator": true,
                 "moduleName": "babel-runtime"
+            },
+            "component",
+            {
+                "libraryName": "element-ui",
+                "styleLibraryName": "theme-chalk"
             }
         ]
     ],

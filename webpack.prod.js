@@ -33,6 +33,7 @@ module.exports = Merge(CommonConfig, {
                                 sourceMap: true
                             }
                         },
+                        // 'css-loader?importLoaders=1', //对于css中@import进来的css同样做前缀处理
                     ],
                 })
             },
