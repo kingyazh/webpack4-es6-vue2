@@ -13,7 +13,7 @@ const publicPath = process.env.ASSET_PATH || '/';
 const appPath = path.join(__dirname, 'src');
 
 // 打包输出目录
-const outputPath = path.join(__dirname, 'dist');
+const outputPath = path.join(__dirname, process.env.NODE_ENV === 'dev'?'dev':'dist');
 const config = {
     // 入口文件
     entry: {
@@ -111,7 +111,7 @@ const config = {
 
     plugins: [
         // 每次打包清空目录
-        new CleanWebpackPlugin(['./dist']),
+        new CleanWebpackPlugin(['./dist','./dev']),
         // 引入全局vue
         new webpack.ProvidePlugin({
             Vue: 'vue',
