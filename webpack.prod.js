@@ -1,9 +1,10 @@
 const webpack = require('webpack');
 const Merge = require('webpack-merge');
-const CommonConfig = require('./webpack.common.js');
+const CommonConfig = require('./webpack.common');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const API_ROOT = require('./api.path');
 module.exports = Merge(CommonConfig, {
     mode:'production',
     devtool: 'source-map',
@@ -78,10 +79,9 @@ module.exports = Merge(CommonConfig, {
             debug: false
         }),
         new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        })
+            'process.env': API_ROOT
+        }),
+
     ],
     optimization: {
         minimizer: [

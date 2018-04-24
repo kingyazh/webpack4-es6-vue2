@@ -1,8 +1,9 @@
 const webpack = require('webpack');
 const Merge = require('webpack-merge');
-const CommonConfig = require('./webpack.common.js');
+const CommonConfig = require('./webpack.common');
 
 const publicPath = process.env.ASSET_PATH || '/';
+const API_ROOT = require('./api.path');
 
 module.exports = Merge(CommonConfig, {
     mode:'development',
@@ -90,10 +91,20 @@ module.exports = Merge(CommonConfig, {
         noInfo: false,
         stats: 'minimal',
         publicPath: publicPath,
+        // 接口做代理，避免开发环境中接口涉及跨域
+        proxy: {
+            "/api": {
+                target: "http://localhost:3000",
+                pathRewrite: {"^/api" : ""}
+            }
+        }
     },
     plugins: [
         new webpack.SourceMapDevToolPlugin({
             filename: 'map/[name].js.map',
+        }),
+        new webpack.DefinePlugin({
+            'process.env': API_ROOT
         }),
     ]
 })

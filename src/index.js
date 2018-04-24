@@ -79,6 +79,9 @@ import {
 import 'element-ui/lib/theme-chalk/index.css';
 import 'font-awesome/css/font-awesome.min.css';
 
+const API_ROOT = process.env['API_ROOT'];
+console.log(API_ROOT);
+
 Vue.config.debug = true;//开启错误提示
 
 // 为登录预留方法

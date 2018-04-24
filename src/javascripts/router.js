@@ -9,6 +9,9 @@ import notFound from './../components/404.vue'
 import menutab from './../components/menu/menuTab.vue'
 import menutable from './../components/menu/menuTable.vue'
 
+import VisaInfoForm from './../components/VisaInfoForm.vue'
+import List from './../components/List.vue'
+
 // 要告诉 vue 使用 vueRouter
 Vue.use(VueRouter);
 
@@ -73,7 +76,14 @@ export default new VueRouter({
 
 
         {path: '/', redirect: '/index'},   // 跳转路由，默认显示路由页面
-
+        {
+            path: '/List',
+            component: List
+        },
+        {
+            path: '/VisaInfo/:countryId/:id',
+            component: VisaInfoForm
+        }
     ],
     'linkActiveClass':'active'  //为路由匹配激活link-active，方便设置类
 

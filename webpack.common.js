@@ -14,6 +14,7 @@ const appPath = path.join(__dirname, 'src');
 
 // 打包输出目录
 const outputPath = path.join(__dirname, process.env.NODE_ENV === 'dev'?'dev':'dist');
+
 const config = {
     // 入口文件
     entry: {
@@ -146,19 +147,21 @@ const config = {
         new HtmlWebpackPlugin({ template: './src/index.html', chunksSortMode: 'dependency' }),//vue 更改为 app.vue
         // 自动添加css样式表到head标签中，并重命名为style.css
         new ExtractTextPlugin('style.css'),
+
         // DefinePlugin 在 webpack4 下弃用
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env': {
+        //         NODE_ENV: '"production"'
+        //     }
+        // }),
+
         // webpack4 中 压缩插件写法已经不一样了，换成了 optimization 在 prod 环境中，如下写法会报错
         // new webpack.optimize.UglifyJsPlugin({
         //     compress: {
         //         warnings: false
         //     }
         // })
-    ],
+    ]
 }
 
 // 获得模板文件 此处暂时不用
