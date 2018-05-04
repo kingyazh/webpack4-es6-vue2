@@ -93,8 +93,9 @@ module.exports = Merge(CommonConfig, {
         publicPath: publicPath,
         // 接口做代理，避免开发环境中接口涉及跨域
         proxy: {
-            "/api": {
-                target: "http://localhost:3000",
+            "rest/*": {
+                target: "http://172.16.37.51:8080/visacloud/rest/",
+                changeOrigin: true,
                 pathRewrite: {"^/api" : ""}
             }
         }

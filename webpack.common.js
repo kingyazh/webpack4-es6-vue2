@@ -19,7 +19,7 @@ const config = {
     // 入口文件
     entry: {
         main: './src/index.js',
-        vendors: ['vue', 'vue-router']
+        vendors: ['vue', 'vue-router','axios']
     },
 
     // 输出
@@ -107,6 +107,20 @@ const config = {
                     },
                 ],
             },
+            // json data chunk
+            {
+                test: /\.(json)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            limit: 10000,
+                            name: '[name].[ext]?[hash:7]',
+                            outputPath: './data/'
+                        },
+                    },
+                ],
+            },
         ],
     },
 
@@ -116,7 +130,8 @@ const config = {
         // 引入全局vue
         new webpack.ProvidePlugin({
             Vue: 'vue',
-            $V: 'vue'
+            $V: 'vue',
+            axios:'axios'
         }),
         // 合并公共资源
         // CommonsChunkPlugin 被删除，用 SplitChunksPlugin 替换
