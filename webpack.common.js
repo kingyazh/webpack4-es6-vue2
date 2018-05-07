@@ -99,10 +99,10 @@ const config = {
                     {
                         loader: 'file-loader',
                         options: {
-                            limit: 10000,
+                            limit: 90000,
                             name: '[name].[ext]?[hash:7]',
-                            outputPath: 'fonts/', // where the fonts will go
-                            publicPath: './fonts/', // override the default path
+                            outputPath: './css/fonts/', // where the fonts will go
+                            publicPath: './fonts/', // override the default path, css 中引用字体文件的相对路径
                         },
                     },
                 ],
@@ -161,7 +161,7 @@ const config = {
         // 拷贝index.html并自动添加js引用，之后分别拆分到 开发 和 生产配置文件中
         new HtmlWebpackPlugin({ template: './src/index.html', chunksSortMode: 'dependency' }),//vue 更改为 app.vue
         // 自动添加css样式表到head标签中，并重命名为style.css
-        new ExtractTextPlugin('style.css'),
+        new ExtractTextPlugin('css/[name].css'),
 
         // DefinePlugin 在 webpack4 下弃用
         // new webpack.DefinePlugin({

@@ -74,6 +74,7 @@ module.exports = Merge(CommonConfig, {
         ]
     },
     plugins: [
+        new ExtractTextPlugin("css/[name].css"),
         new webpack.LoaderOptionsPlugin({
             minimize: true,
             debug: false

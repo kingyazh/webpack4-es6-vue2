@@ -80,6 +80,21 @@ module.exports = Merge(CommonConfig, {
                     }
                 ]
             },
+            // font chunk
+            {
+                test: /\.(woff|woff2?|eot|ttf|otf|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            limit: 90000,
+                            name: '[name].[ext]?[hash:7]',
+                            outputPath: './fonts/',
+                            publicPath: './fonts/',
+                        },
+                    },
+                ],
+            },
         ]
     },
     // dev server
