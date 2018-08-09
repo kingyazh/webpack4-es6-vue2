@@ -101,7 +101,7 @@ module.exports = Merge(CommonConfig, {
     devServer: {
         port: 30008,
         host: 'localhost',
-        hot: true,
+        inline: true,
         historyApiFallback: true,
         noInfo: false,
         stats: 'minimal',
