@@ -6,7 +6,7 @@ const publicPath = process.env.ASSET_PATH || '/';
 const API_ROOT = require('./api.path');
 
 module.exports = Merge(CommonConfig, {
-    mode:'development',
+    mode: 'development',
     // source map
     devtool: 'eval-source-map',
     module: {
@@ -23,9 +23,9 @@ module.exports = Merge(CommonConfig, {
                     },
                     // 'css-loader?importLoaders=1', //对于css中@import进来的css同样做前缀处理
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                         options: {
-                            importLoaders:1,
+                            importLoaders: 1,
                             sourceMap: true
                         }
                     },
@@ -36,7 +36,7 @@ module.exports = Merge(CommonConfig, {
                         }
                     },
                     {
-                        loader: "resolve-url-loader",
+                        loader: 'resolve-url-loader',
                         options: {
                             sourceMap: true
                         }
@@ -54,26 +54,26 @@ module.exports = Merge(CommonConfig, {
                         }
                     },
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                         options: {
-                            importLoaders:1,
+                            importLoaders: 1,
                             sourceMap: true
                         }
                     },
                     {
-                        loader: "postcss-loader",
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: "resolve-url-loader",
+                        loader: 'postcss-loader',
                         options: {
                             sourceMap: true
                         }
                     },
                     {
-                        loader: "sass-loader",
+                        loader: 'resolve-url-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
                         options: {
                             sourceMap: true
                         }
@@ -108,10 +108,10 @@ module.exports = Merge(CommonConfig, {
         publicPath: publicPath,
         // 接口做代理，避免开发环境中接口涉及跨域
         proxy: {
-            "rest/*": {
-                target: "http://172.16.37.51:8080/visacloud/rest/",
+            'rest/*': {
+                target: 'http://172.16.37.51:8080/visacloud/rest/',
                 changeOrigin: true,
-                pathRewrite: {"^/api" : ""}
+                pathRewrite: { '^/api': '' }
             }
         }
     },
@@ -123,4 +123,4 @@ module.exports = Merge(CommonConfig, {
             'process.env': API_ROOT
         }),
     ]
-})
+});

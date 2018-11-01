@@ -2,8 +2,8 @@ const webpack = require('webpack');
 const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const API_ROOT = require('./api.path');
 module.exports = Merge(CommonConfig, {
     mode:'production',
@@ -29,7 +29,7 @@ module.exports = Merge(CommonConfig, {
                             }
                         },
                         {
-                            loader: "resolve-url-loader",
+                            loader: 'resolve-url-loader',
                             options: {
                                 sourceMap: true
                             }
@@ -45,25 +45,25 @@ module.exports = Merge(CommonConfig, {
                     fallback: 'style-loader',
                     use: [
                         {
-                            loader: "css-loader",
+                            loader: 'css-loader',
                             options: {
                                 sourceMap: true
                             }
                         },
                         {
-                            loader: "postcss-loader",
+                            loader: 'postcss-loader',
                             options: {
                                 sourceMap: true
                             }
                         },
                         {
-                            loader: "resolve-url-loader",
+                            loader: 'resolve-url-loader',
                             options: {
                                 sourceMap: true
                             }
                         },
                         {
-                            loader: "sass-loader",
+                            loader: 'sass-loader',
                             options: {
                                 sourceMap: true
                             }
@@ -74,7 +74,7 @@ module.exports = Merge(CommonConfig, {
         ]
     },
     plugins: [
-        new ExtractTextPlugin("css/[name].css"),
+        new ExtractTextPlugin('css/[name].css'),
         new webpack.LoaderOptionsPlugin({
             minimize: true,
             debug: false
@@ -91,7 +91,7 @@ module.exports = Merge(CommonConfig, {
                 parallel: true,
                 sourceMap: true
             }),
-            new OptimizeCSSAssetsPlugin({})  // use OptimizeCSSAssetsPlugin
+            new OptimizeCSSAssetsPlugin({}) // use OptimizeCSSAssetsPlugin
         ]
     }
-})
+});

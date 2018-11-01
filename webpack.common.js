@@ -71,9 +71,9 @@ const config = {
                 test: /\.(html)$/,
                 use: [
                     {
-                        loader: "html-loader",
+                        loader: 'html-loader',
                         options: {
-                            attrs: ["img:src", "link:href"],
+                            attrs: ['img:src', 'link:href'],
                         },
                     },
                 ],
@@ -140,7 +140,7 @@ const config = {
         // }),
 
         new webpack.optimize.SplitChunksPlugin({
-            chunks: "all",
+            chunks: 'all',
             minSize: 30000,
             minChunks: 1,
             maxAsyncRequests: 5,
@@ -163,7 +163,7 @@ const config = {
         // 自动添加css样式表到head标签中，并重命名为style.css
         new ExtractTextPlugin('css/[name].css'),
     ]
-}
+};
 
 // 获得模板文件 此处暂时不用
 let pages = Object.keys(getEntry('src/views/**/*.html', 'src/views/'));
@@ -172,29 +172,29 @@ pages.forEach(function (pathname) {
         filename: './views/' + pathname + '.html', // 生成的html存放路径，相对于path
         template: 'src/views/' + pathname + '.html', // html模板路径
         inject: false // js插入的位置，true/'head'/'body'/false
-    }
-    config.plugins.push(new HtmlWebpackPlugin(conf))
-})
+    };
+    config.plugins.push(new HtmlWebpackPlugin(conf));
+});
 
 module.exports = config;
 
 
 // 获得模板文件 此处暂时不用
 function getEntry(globPath, pathDir) {
-    const files = glob.sync(globPath)
-    let entries = {}, entry, dirname, basename, pathname, extname
+    const files = glob.sync(globPath);
+    let entries = {}, entry, dirname, basename, pathname, extname;
 
     for (var i = 0; i < files.length; i++) {
-        entry = files[i]
-        dirname = path.dirname(entry)
-        extname = path.extname(entry)
-        basename = path.basename(entry, extname)
-        pathname = path.normalize(path.join(dirname, basename))
-        pathDir = path.normalize(pathDir)
+        entry = files[i];
+        dirname = path.dirname(entry);
+        extname = path.extname(entry);
+        basename = path.basename(entry, extname);
+        pathname = path.normalize(path.join(dirname, basename));
+        pathDir = path.normalize(pathDir);
         if (pathname.startsWith(pathDir)) {
-            pathname = pathname.substring(pathDir.length)
+            pathname = pathname.substring(pathDir.length);
         }
-        entries[pathname] = ['./' + entry]
+        entries[pathname] = ['./' + entry];
     }
-    return entries
+    return entries;
 }

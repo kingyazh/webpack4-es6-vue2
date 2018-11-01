@@ -1,17 +1,30 @@
 {
-   "env": {
-      "es6": true,
-      "browser": true
-   },
-   "extends": "eslint:recommended",
-   "parser": "babel-eslint",
-   "rules": {
-      "no-console": 0,
-      "experimentalDecorators": 0
-   },
-   "globals": {
-      "Swiper": true,
-      "$": true,
-      "jquery": true
-   }
+  "env": {
+    "es6": true,
+    "browser": true,
+    "commonjs": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": 0,
+    "experimentalDecorators": 0,
+    "linebreak-style": 0,
+    "no-extra-boolean-cast": 0,
+    "no-mixed-spaces-and-tabs": 2,
+    "no-multi-spaces": 1,
+    "no-unused-vars": 0,
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
+  },
+  "globals": {
+    "Swiper": true,
+    "$": true,
+    "jquery": true
+  }
 }
